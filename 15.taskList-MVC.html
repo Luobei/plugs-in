@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工作列表</title>
+	<style>
+		.wrapper {width: 400px; margin:20px auto;}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>我的工作列表</h1>
+		<br>
+		<div id="container">
+			<div id="template" style="display:block">
+				<p id="con$id$"><input type="checkbox" name="" id=""><span> $content$</span><span style="float:right">提交时间：$time$</span></p>
+			</div>
+		</div>
+		<input type="text" id="todo">
+		<input type="button" id="btn" value="Add">
+	</div>
+	<script>
+		// 模型
+		var model = {
+			"data":[
+			{	"id":1,
+				"content":"吃饭",
+				"time":"2016-01-01 22:46:17"
+			},
+			{	"id":2,
+				"content":"睡觉",
+				"time":"2016-02-01 22:46:17"
+			},
+			{	"id":3,
+				"content":"打豆豆",
+				"time":"2016-03-01 22:46:17"
+			}
+			],
+			"getMaxId":function(){
+				var maxId = this.data[0].id;
+				for (var i = 0; i < this.data.length; i++) {
+					if (this.data[i].id > maxId) {
+						maxId = this.data[i].id
+					}
+				}
+				return maxId;
+			},
+			"addData":function(con,time){
+				
+				//var time = timer;
+				//console.log(time)
+				var obj = {
+					"id":this.getMaxId()+1,
+					"content":con,
+					"time":time
+				}
+				this.data.push(obj)
+			},
+			"deleteData":function(){
+				
+			}
+		}
+		//debugger;
+		var temp = document.getElementById('template').innerHTML;
+		var container = document.getElementById('container');
+		function show(){
+			
+			// 方法一
+			// var str = '';
+			// for (var i = 0; i < model.data.length; i++) {
+			// 	str +=  '<p id="con'+model.data[i].id+'"><input type="checkbox" name="" id=""><span> '+model.data[i].content+'</span></p>'
+			// }
+			// container.innerHTML = str;
+			// 方法二
+			
+			var str = '';
+			//console.log(temp);
+			for (var i = 0 ; i < model.data.length ; i++ ){				
+				var p = /\$\w+\$/g;
+				var newstr = temp.replace(p, function(m){
+					//console.log(m);
+					var t = m.replace(/\$/g,"");
+					//console.log(t);
+					return model.data[i][t];
+
+				})
+				str += newstr
+				container.innerHTML = str;
+			}
+		}
+		show();
+		// debugger;
+		//console.log(model.getMaxId());
+		// 控制器
+		var btn = document.getElementById('btn');
+		//console.log(model.data);
+		btn.onclick = function(){
+			var year = new Date().getFullYear(),
+				months = new Date().getMonth(),
+				day = new Date().getDay(),
+				hours = new Date().getHours(),
+				minutes = new Date().getMinutes(),
+				seconds = new Date().getSeconds();
+				if(months < 10){
+					months = "0"+months;
+				}
+				if(day < 10){
+					day = "0"+day;
+				}
+				if(hours < 10){
+					hours = "0"+hours;
+				}
+				if(minutes < 10){
+					minutes = "0"+minutes;
+				}
+				if(seconds < 10){
+					seconds = "0"+seconds;
+				}
+			var time = year+"-"+months+"-"+day+" "+hours+":"+minutes+":"+seconds;
+			//console.log(time);
+			var value = document.getElementById('todo').value;
+			model.addData(value, time);
+			//console.log(model.data);
+			show();
+		}
+
+	</script>
+</body>
+</html>

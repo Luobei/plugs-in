@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>比大小</title>
+</head>
+<body>
+	<script>
+	//debugger;
+		function f() {
+			// body...
+			//console.log(arguments);
+			var max = arguments[0] ;
+			for (var i = 0; i < arguments.length; i++) {			
+				if (max >= arguments[i]) {
+					max = max ;
+				} else {
+					max = arguments[i]
+				}
+				
+				// if (arguments[i] >= arguments[i+1]) {
+				// 	console.log(arguments[i])
+				// } else{
+				// 	console.log(arguments[i+1])
+				// }
+
+			}
+			console.log(max);
+		}
+		f(111,200,32,4,52,6,7);
+	</script>
+</body>
+</html>

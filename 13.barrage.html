@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹幕</title>
+	<style>
+		html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+		ul,ol{list-style-type:none;}
+		#wrapper { width: 640px ; height: 520px; margin:20px auto; }
+		#video {width: 638px; height: 480px;border:1px solid #ccc; position: relative;}
+		input[type="text"] {width: 500px; height: 40px;}
+		input[type="button"] {width: 130px; margin-left: 5px; height: 46px;font-size: 20px;}
+	</style>	
+</head>
+<body>
+	<div id="wrapper">
+		<div id="video"></div>
+		<input type="text" ><input type="button" value="走你！" >		
+	</div>
+	<script>
+
+		function Danmu (huabu){
+			var that = this;
+			this.huaBu = document.getElementById(huabu);
+			this.video = this.huaBu.getElementsByTagName("div")[0];		//使用getElementById('');报错			
+			this.inputs = this.huaBu.getElementsByTagName('input');
+			//console.log(this.huaBu,this.ziDan,this.inputs);
+			console.log(this.huaBu,this.inputs,this.video);
+			this.ZiDan = function(words){
+				var Zthat=this
+				this.span = that.video.createElement("span");
+				this.span.style.position = 'absolute';
+				this.span.style.top = Math.floor(that.video.offsetHeight*Math.random);
+				this.span.style.left = 	that.video.offsetWidth;		
+			}
+			this.ZiDan.prototype.move = function(){
+
+			}
+
+			this.inputs[1].onclick = function(){
+				
+				var words = that.inputs[0].value;
+				Zthat.span.innerHTML= words;					
+				//var z =new ZiDan(words);
+
+			}
+			// function ZiDan (words){			
+				
+			// }
+		}
+		
+		Danmu("wrapper");
+	</script>
+</body>
+</html>

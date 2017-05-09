@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查询数组内元素个数</title>
+</head>
+<body>
+	<script>
+		var t = [1 ,2 ,3 ,[4 ,5,6 ,[7 , 8 ,9 ,[10 ,11]]],[12 ,13]];
+		function getLen(a){
+			var len = 0 ;
+			for (var i = 0 ; i < a.length ; i++){
+				//数组元素为数组时
+				if(Array.isArray(a[i])){
+					len += getLen(a[i]);
+				}// 数组元素为普通时
+				else{
+					len += 1
+				}
+				
+			}
+			return len;
+		}
+		debugger;
+		console.log(getLen(t));
+	</script>
+</body>
+</html>

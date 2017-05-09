@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽-面向对象</title>
+	<style>
+		html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+		ul,ol{list-style-type:none;}
+		.div1{width: 150px;height: 150px;border:1px solid #ccc; background-color: blue;position: absolute; top:50px; left: 50px;cursor: pointer;}
+	</style>	
+</head>
+<body>
+	<div class="div1" id="box"> 盒子1</div>
+	<div class="div1" id="box2">盒子2</div>
+	<script>
+		function Run (divId){
+			var that =this;
+			this.div = document.getElementById(divId);
+			this.divX = 0;
+			this.divY = 0;
+			this.mouseX;
+			this.mouseY;
+			//console.log(this.div);
+			rel= [];
+			turn = false;
+			this.div.onmousedown= function(e){
+				turn = true ; 
+				e = e || window.Event ;
+				this.mouseX = e.clientX;
+				this.mouseY = e.clientY;
+				this.divX   = this.offsetLeft;
+				this.divY   = this.offsetTop;
+				rel[0] = this.mouseX - this.divX;
+				rel[1] = this.mouseY - this.divY;
+				return rel;
+			};
+			this.div.onmouseup = function(){
+				turn = false;
+				if(this.style.left < 50){
+					this.style.left = 0
+				}
+			};
+			this.div.onmousemove=function(e){
+				e = e || window.Event ;			
+				//console.log(rel[0],rel[1])
+				if (turn) {
+					this.style.left = e.clientX - rel[0] + 'px' ;
+					this.style.top = e.clientY -  rel[1] + 'px';
+
+				}
+			}
+						
+		}
+		// Run.prototype.onmousedown = function(e){
+		// 	turn = true ; 
+		// 	e = e || window.Event ;
+		// 	this.mouseX = e.clientX;
+		// 	this.mouseY = e.clientY;
+		// 	this.divX   = this.div.offsetLeft;
+		// 	this.divY   = this.div.offsetTop;
+		// 	this.rel[0] = this.mouseX - this.divX;
+		// 	this.rel[1] = this.mouseY - this.divY;
+		// 	return this.rel;
+		// 	console.log(this.rel);
+		// }
+		// Run.prototype.onmouseup = function(){
+		// 	turn = false;
+		// }
+		var r = new Run('box');
+		var r2 = new Run('box2');
+	</script>
+</body>
+</html>

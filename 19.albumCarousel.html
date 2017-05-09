@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>大图轮播</title>
+	<style>
+		div.wrapper {
+			width:600px;
+			margin: 50px auto;
+			perspective: 1600px; 
+			perspective-origin: 50% 100px;
+			position: relative;
+		}
+		ul{
+			list-style: none;
+			cursor: pointer;			
+		}
+		ul {position: relative;}
+		ul li { 
+			width: 600px;
+			height: 400px; 
+			border:1px solid #ddd;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			transition: all 1s ease 0s;
+		}
+		ul li img{
+			width: 600px;
+			height: 400px; 
+		}
+		.current{
+			background:blue;
+			transform: translateZ(-30px) ;
+			z-index: 10;
+		}
+		.left1{
+			background:#ccc;
+			transform: rotateY(30deg) translateX(-100px) translateZ(-50px);
+			z-index: 9;
+		}
+		.left2{
+			background:green;
+			transform: rotateY(35deg) translateX(-200px) translateZ(-150px);
+			z-index: 8;
+		}
+
+		.right1{
+			background:#ccc;
+			transform: rotateY(-30deg) translateX(100px) translateZ(-50px);
+			z-index: 7;
+		}
+		.right2{
+			background:green;
+			transform: rotateY(-30deg) translateX(200px) translateZ(-150px);
+			z-index: 6;
+		}
+		.beitai{
+			display: none;
+		}
+		span{
+			display: block;
+			width: 80px;
+			height: 60px;
+			position: absolute;
+			top: 180px;
+			z-index: 11;
+			background: rgba(0 ,0 ,0, 0.2);
+			cursor: pointer;
+			border-radius: 10px;
+		}
+		span:hover {
+			background: rgba(0 ,0 ,0, 0.5);
+		}
+		span:first-of-type{
+			left: -200px;
+		}
+		span:last-of-type{
+			right: -200px;
+		}
+		.left{
+			width: 30px;
+			height: 30px;
+			border-top:4px solid #fff;
+			border-left: 4px solid #fff;
+			transform: rotateZ(-45deg)  translateX(8px) translateY(28px);
+		}
+		.right{
+			width: 30px;
+			height: 30px;
+			border-top:4px solid #fff;
+			border-right: 4px solid #fff;
+			transform: rotateZ(45deg)  translateX(22px) translateY(-4px);
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul>
+			<li class="left2" ><img src="images/0.png" alt=""></li>
+			<li class="left1"><img src="images/1.png" alt=""></li>
+			<li class='current'><img src="images/2.png" alt=""></li>
+			<li class="right1"><img src="images/3.png" alt=""></li>
+			<li class="right2"><img src="images/4.png" alt=""></li>
+			<li class="beitai"><img src="images/5.png" alt=""></li>
+			<li class="beitai"><img src="images/6.png" alt=""></li>
+			<li class="beitai"><img src="images/7.png" alt=""></li>
+			<li class="beitai"><img src="images/8.png" alt=""></li>
+			<li class="beitai"><img src="images/9.png" alt=""></li>
+		</ul>
+		<span><div class='left'></div></span>
+		<span><div class="right"></div></span>
+		<script>
+			//获取数据，申明变量
+			var lis = document.querySelectorAll('ul li');
+			var btns = document.querySelectorAll('span');
+			var ul = document.querySelector('ul');
+			var turn = true ;
+			//console.log(lis,btns );
+			var show = ['left2','left1','current','right1','right2','beitai','beitai','beitai','beitai','beitai'];
+		
+			btns[0].onclick = function(){
+				clearInterval(t);
+				if(turn){
+					turn = false;
+					setTimeout( function(){
+						turn = true;
+					} , 1000 );
+					show.unshift(show.pop());
+					for (var i = 0; i < lis.length; i++) {
+					lis[i].className = show[i]
+					}
+				}
+			}
+			btns[1].onclick = function(){
+				clearInterval(t);
+				if (turn) {
+					turn = false;
+					setTimeout( function(){
+						turn = true;
+					} , 1000 );
+					show.push(show.shift());
+					//console.log(show);
+					for (var i = 0; i < lis.length; i++) {
+						lis[i].className = show[i]
+					}					
+				}				
+			}
+			function photoScroll(arry,photo,s){
+				t = setInterval(function(){
+					arry.unshift(arry.pop());
+					for (var i = 0; i < photo.length; i++) {
+						photo[i].className = arry[i];
+					}
+				},s);
+			}
+			photoScroll(show,lis,2000);
+
+			ul.onmouseover =function(){
+				clearInterval(t);
+			}
+			ul.onmouseout =function(){
+				photoScroll(show,lis,2000);
+			}
+			
+			
+		</script>	
+	</div>
+</body>
+</html>

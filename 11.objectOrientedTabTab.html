@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>28.面向tab选项卡</title>
+	<style>
+		html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+		ul,ol{list-style-type:none;}
+		.wrapper{width: 600px; margin:50px auto; border:1px solid #ccc;}
+		#tab1,#tab2,#tab3{ border:1px solid #ccc;margin-top: 20px;}
+		ul{overflow: hidden; background-color: #ccc;}
+		ul li {float: left; padding:5px 20px;border:1px solid #fff;border-left: none;border-top: none;cursor: pointer;}
+		ul li.on{font-weight: bold;background-color: blue;color: #fff;}
+		ol {display: none; padding:10px;}
+	</style>	
+</head>
+<body>
+	<div class="wrapper">
+		<div id="tab1">
+			<ul>
+				<li class="on">选项卡1</li>
+				<li>选项卡2</li>
+				<li>选项卡3</li>
+				<li>选项卡4</li>
+			</ul>
+			<ol style="display:block">
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡4的内容</a></li>
+				<li><a href="">选项卡4的内容</a></li>
+				<li><a href="">选项卡4的内容</a></li>
+				<li><a href="">选项卡4的内容</a></li>
+			</ol>
+		</div>	
+		<div id="tab2">
+			<ul>
+				<li class="on">选项卡1</li>
+				<li>选项卡2</li>
+				<li>选项卡3</li>
+				
+			</ul>
+			<ol style="display:block">
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+			</ol>
+			
+		</div>	
+		<div id="tab3">
+			<ul>
+				<li class="on">选项卡1</li>
+				<li>选项卡2</li>
+				<li>选项卡3</li>
+				<li>选项卡4</li>
+				<li>选项卡5</li>
+			</ul>
+			<ol style="display:block">
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+				<li><a href="">选项卡1的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+				<li><a href="">选项卡2的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+				<li><a href="">选项卡3的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡4的内容</a></li>
+				<li><a href="">选项卡4的内容</a></li>
+				<li><a href="">选项卡4的内容</a></li>
+				<li><a href="">选项卡4的内容</a></li>
+			</ol>
+			<ol>
+				<li><a href="">选项卡5的内容</a></li>
+				<li><a href="">选项卡5的内容</a></li>
+				<li><a href="">选项卡5的内容</a></li>
+				<li><a href="">选项卡5的内容</a></li>
+			</ol>
+		</div>		
+	</div>
+	<script>
+		// 创建对象构造器
+		function Tab(tabId){
+			this.tab = document.getElementById(tabId);
+			this.lis = this.tab.getElementsByTagName('ul')[0].getElementsByTagName('li');
+			this.ols = this.tab.getElementsByTagName('ol');
+			var that = this ;
+			for (var i = 0; i < this.lis.length; i++) {
+				this.lis[i].index = i ;
+				this.lis[i].onclick = function(){
+					that.tabShow(this.index);
+				}
+			}
+		}
+		//选项卡显示
+		Tab.prototype.tabShow = function(index) {
+			// body...
+			for (var i = 0; i < this.lis.length; i++) {
+				this.lis[i].className = '';
+				this.ols[i].style.display = 'none'
+			}
+			this.lis[index].className = 'on';
+			this.ols[index].style.display = 'block';
+		};
+		// 调用对象
+		var t1 = new Tab('tab1');
+		var t2 = new Tab('tab2');
+		var t3 = new Tab('tab3');
+	</script>
+
+</body>
+</html>

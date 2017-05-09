@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象轮播图</title>
+	<style>
+		html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+		ul,ol{list-style-type:none;}
+		li{float: left;}
+		.wrapper{width: 400px;margin:50px auto;}
+		#photo1{width: 400px; overflow: hidden; position: relative;height: 310px;}
+		#photo1 ul{width: 1000%;overflow: hidden;position: absolute;top: 0px;left: -100%;}
+		#photo1 ul li{width: 10%; }
+		#photo1 ul li img{width: 100%; height:100%;}
+		#photo1 ol{width: 120px; overflow: hidden;background: rgba( 0, 0 ,0 ,.5);position: absolute;left: 50%;margin-left: -60px;bottom: 20px;border-radius: 9px;}
+		#photo1 ol li{width: 10px;height: 10px;border-radius: 5px;background-color: #fff;margin: 4px 5px}
+		#photo1 ol li.on{background-color: red;}
+	</style>	
+</head>
+<body>
+	<div class="wrapper">
+		<div id="photo1">			
+			<ul>
+				<li><img src="images/6.png" alt=""></li>
+				<li><img src="images/1.png" alt=""></li>
+				<li><img src="images/2.png" alt=""></li>
+				<li><img src="images/3.png" alt=""></li>
+				<li><img src="images/4.png" alt=""></li>
+				<li><img src="images/5.png" alt=""></li>
+				<li><img src="images/6.png" alt=""></li>
+				<li><img src="images/1.png" alt=""></li>
+			</ul>				
+			<ol>
+				<li class="on"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>
+		</div>
+	</div>
+	<script src="jquery-1.11.3.min.js"></script> 
+	<script>
+		$(function(){
+			function slide(photosId){
+				$photos = $(photosId);
+				$ul = $photos.children('ul');
+				$lis    = $ul.children('li');
+				$olLis  = $photos.children('ol').children('li');
+				var length = $lis.length;
+				var init = 0;
+				var i = 0;
+				//that  = this;
+				//console.log(this.photos,this.lis,this.olLis);
+				//console.log(this);
+				t = setInterval(function(){
+					init++;	
+					$ul.animate({"left":"-"+(init+1)+"00%"},1000 ,"swing" , function(){
+						if((length -1) == init){
+						$ul.css({"left":"-100%"});
+						init = 0;
+						}
+					})
+					console.log(0)
+					// if()
+					// $olLis.eq(init-1).addClass('on').siblings().removeClass('on');
+				},2000)
+				t2 = setInterval(function(){
+					i++;
+					if( length-2 == i){
+						i = 0;
+					};
+					$olLis.eq(i-1).addClass('on').siblings().removeClass('on');
+					
+				},2000)
+			}
+			//debugger;
+			slide('#photo1');
+		})
+	</script>
+</body>
+</html>

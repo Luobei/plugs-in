@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组查询</title>
+</head>
+<body>
+	<script>
+		Array.prototype.getPos = function(x) {
+			// body...
+			var index = -1 ;
+			for (var i = 0; i < this.length; i++) {
+				if (x == this[i]) {
+					index = i ;
+					break;
+				}
+			}
+			return index ;
+		}
+		Array.prototype.delete = function(b) {
+			// body...
+			var index = this.getPos(b);
+			if ( index != -1){
+				this.splice(index,1);
+			}
+			return this;
+		};
+		var a =[1,3,5,7,5,5,8,0,12,34,56];
+		console.log(a.getPos(5));
+		console.log(a.delete(5));
+	</script>
+</body>
+</html>

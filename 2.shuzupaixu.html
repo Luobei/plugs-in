@@ -1,0 +1,33 @@
+<html>
+	<head>
+	<meta charset="utf-8"/>
+        
+	</head>
+	<body>
+ 
+        
+    <script type="text/javascript">
+
+//        对数组元素进行排序，按到指定数值的距离的远近进行排序。
+//例如:
+//Var a = [10,20,5,4,80,90];
+//以到x=50的距离进行排序，则结果是：
+        var arr = [20,80,10,90,5,4];
+        
+        var dist = 100;
+        
+        function mySort(v1,v2){
+            var d1 = Math.abs(v1 - dist);
+            var d2 = Math.abs(v2 - dist);
+            
+            return d1 - d2;
+
+        }
+        console.info(arr.sort(mySort));
+        
+// 问题是：能够按 与指定的值 之间的距离进行排序 
+    </script>
+        
+
+	</body>
+</html>

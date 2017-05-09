@@ -1,0 +1,119 @@
+png<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.cube{
+			width: 400px;
+			height: 400px;
+			margin:200px auto;
+			-webkit-perspective: 2000px;
+			-moz-perspective: 2000px;
+			-ms-perspective: 2000px;
+			-o-perspective: 2000px;
+			perspective: 2000px;
+		}
+
+		.cube ul{
+			width: 400px;
+			height: 400px;
+			position: relative;
+			list-style-type: none;
+			-webkit-transition: all 10s ease 0s;
+			-moz-transition: all 10s ease 0s;
+			-ms-transition: all 10s ease 0s;
+			-o-transition: all 10s ease 0s;
+			transition: all 10s ease 0s;
+			-webkit-transform-style:preserve-3d;
+			-moz-transform-style:preserve-3d;
+			-ms-transform-style:preserve-3d;
+			-o-transform-style:preserve-3d;
+			transform-style:preserve-3d;
+		}
+		.cube ul li {
+			width: 400px;
+			height: 400px;
+			position:absolute;
+			background-size: 100% 100%;
+		}
+		.cube ul li:nth-child(1){
+			background: url(images/1.png);
+			-webkit-transform: translateZ(200px);
+			-moz-transform: translateZ(200px);
+			-ms-transform: translateZ(200px);
+			-o-transform: translateZ(200px);
+			transform: translateZ(200px);
+			background-size: 100% 100%;
+		
+		}
+		.cube ul li:nth-child(2){
+			background: url(images/2.png);
+			-webkit-transform:rotateY(180deg) translateZ(200px);
+			-moz-transform:rotateY(180deg) translateZ(200px);
+			-ms-transform:rotateY(180deg) translateZ(200px);
+			-o-transform:rotateY(180deg) translateZ(200px);
+			transform:rotateY(180deg) translateZ(200px);
+			background-size: 100% 100%;
+
+		}
+		.cube ul li:nth-child(3){
+			background:url(images/3.png);
+			-webkit-transform: rotateY(-90deg) translateZ(200px);
+			-moz-transform: rotateY(-90deg) translateZ(200px);
+			-ms-transform: rotateY(-90deg) translateZ(200px);
+			-o-transform: rotateY(-90deg) translateZ(200px);
+			transform: rotateY(-90deg) translateZ(200px);
+			background-size: 100% 100%;
+			
+		}
+		.cube ul li:nth-child(4){
+			background: url(images/4.png);
+			-webkit-transform:rotateY(90deg) translateZ(200px);
+			-moz-transform:rotateY(90deg) translateZ(200px);
+			-ms-transform:rotateY(90deg) translateZ(200px);
+			-o-transform:rotateY(90deg) translateZ(200px);
+			transform:rotateY(90deg) translateZ(200px);
+			background-size: 100% 100%;
+		}
+		.cube ul li:nth-child(5){
+			background: url(images/5.png);
+			-webkit-transform:rotateX(90deg) translateZ(200px);
+			-moz-transform:rotateX(90deg) translateZ(200px);
+			-ms-transform:rotateX(90deg) translateZ(200px);
+			-o-transform:rotateX(90deg) translateZ(200px);
+			transform:rotateX(90deg) translateZ(200px);
+			background-size: 100% 100%;
+		}
+		.cube ul li:nth-child(6){
+			background: url(images/6.png);
+			-webkit-transform:rotateX(-90deg) translateZ(200px);
+			-moz-transform:rotateX(-90deg) translateZ(200px);
+			-ms-transform:rotateX(-90deg) translateZ(200px);
+			-o-transform:rotateX(-90deg) translateZ(200px);
+			transform:rotateX(-90deg) translateZ(200px);
+			background-size: 100% 100%;
+		}
+
+		body:hover ul{
+			-webkit-transform: rotateY(1000deg) rotateX(1000deg);
+			-moz-transform: rotateY(1000deg) rotateX(1000deg);
+			-ms-transform: rotateY(1000deg) rotateX(1000deg);
+			-o-transform: rotateY(1000deg) rotateX(1000deg);
+			transform: rotateY(1000deg) rotateX(1000deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="cube">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复制数组</title>
+</head>
+<body>
+	<script>
+		var t = [1 ,2 ,3 ,[4 ,5,6 ,[7 , 8 ,9 ,[10 ,11]]],[12 ,13]];
+		function getArr(a){
+			var newArr = [];
+			for (var i = 0; i < a.length; i++) {
+				// 数组元素为数组时
+				if (Array.isArray(a[i])) {
+					newArr[i] = getArr(a[i]);
+				} else{
+					// 数组元素为正常
+					newArr[i] = a[i];
+				}				
+			}
+			return newArr;
+		}
+		//debugger;
+		var t1 = getArr(t);
+		console.log(t);
+		console.log(t1);
+	</script>
+</body>
+</html>

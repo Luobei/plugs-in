@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正反面切换</title>
+	<style>
+	html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+	div{
+		width:300px;
+		height:400px;
+		margin:100px auto;
+		border:3px solid orange;
+		position:relative;
+		perspective:500px;
+	}
+
+	div img{
+		position:absolute;
+		left:0;
+		top:0;
+		transition:all 1s ease 0s;
+	}
+
+	div img:nth-of-type(1){
+		transform:rotateY(180deg);
+		backface-visibility:hidden;
+	}
+
+	div img:nth-of-type(2){
+		backface-visibility:hidden;
+
+	}
+
+	div:hover img:nth-of-type(2){
+		transform:rotateY(180deg);
+	}
+
+	div:hover img:nth-of-type(1){
+		transform:rotateY(360deg);
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="images/backface.jpg">
+		<img src="images/foreface.jpg">
+	</div>
+</body>
+</html>

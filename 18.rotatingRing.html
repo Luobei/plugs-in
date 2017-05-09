@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转的照片墙</title>
+	<style>
+		.wrapper{
+			width: 200px; 
+			height: 130px; 
+			margin:100px auto;
+			-webkit-perspective: 1000px;
+			-moz-perspective: 1000px;
+			-ms-perspective: 1000px;
+			-o-perspective: 1000px;
+			perspective: 1000px;
+		}
+		.wrapper ul {			
+			width: 200px ; 
+			height: 130px;
+			list-style-type: none; 
+			position: relative; 
+			-webkit-transform-style:preserve-3d;
+			-moz-transform-style:preserve-3d; 
+			-ms-transform-style:preserve-3d; 
+			-o-transform-style:preserve-3d; 
+			transform-style:preserve-3d;  
+			-webkit-transform: rotateX(-20deg);
+			-moz-transform: rotateX(-20deg);
+			-ms-transform: rotateX(-20deg);
+			-o-transform: rotateX(-20deg);
+			transform: rotateX(-20deg);
+			-webkit-transition: all 3s ease 0s;
+			-moz-transition: all 3s ease 0s;
+			-ms-transition: all 3s ease 0s;
+			-o-transition: all 3s ease 0s;
+			transition: all 3s ease 0s;
+		}
+		.wrapper li{
+			top: 0px;
+			left: 0px;			 
+			position: absolute;
+			cursor: pointer;
+
+		}
+		li img{
+			width: 200px;
+			height: 150px;
+		}
+		li:nth-of-type(1){
+			-webkit-transform: translateZ(308px);
+			-moz-transform: translateZ(308px);
+			-ms-transform: translateZ(308px);
+			-o-transform: translateZ(308px);
+			transform: translateZ(308px);
+		}
+		li:nth-of-type(2){
+			-webkit-transform:rotateY(36deg) translateZ(308px);
+			-moz-transform:rotateY(36deg) translateZ(308px);
+			-ms-transform:rotateY(36deg) translateZ(308px);
+			-o-transform:rotateY(36deg) translateZ(308px);
+			transform:rotateY(36deg) translateZ(308px);
+		}
+		li:nth-of-type(3){
+			-webkit-transform:rotateY(72deg) translateZ(308px);
+			-moz-transform:rotateY(72deg) translateZ(308px);
+			-ms-transform:rotateY(72deg) translateZ(308px);
+			-o-transform:rotateY(72deg) translateZ(308px);
+			transform:rotateY(72deg) translateZ(308px);
+		}
+		li:nth-of-type(4){
+			-webkit-transform:rotateY(108deg) translateZ(308px);
+			-moz-transform:rotateY(108deg) translateZ(308px);
+			-ms-transform:rotateY(108deg) translateZ(308px);
+			-o-transform:rotateY(108deg) translateZ(308px);
+			transform:rotateY(108deg) translateZ(308px);
+		}
+		li:nth-of-type(5){
+			-webkit-transform:rotateY(144deg) translateZ(308px);
+			-moz-transform:rotateY(144deg) translateZ(308px);
+			-ms-transform:rotateY(144deg) translateZ(308px);
+			-o-transform:rotateY(144deg) translateZ(308px);
+			transform:rotateY(144deg) translateZ(308px);
+		}
+		li:nth-of-type(6){
+			-webkit-transform:rotateY(180deg) translateZ(308px);
+			-moz-transform:rotateY(180deg) translateZ(308px);
+			-ms-transform:rotateY(180deg) translateZ(308px);
+			-o-transform:rotateY(180deg) translateZ(308px);
+			transform:rotateY(180deg) translateZ(308px);
+		}
+		li:nth-of-type(7){
+			-webkit-transform:rotateY(216deg) translateZ(308px);
+			-moz-transform:rotateY(216deg) translateZ(308px);
+			-ms-transform:rotateY(216deg) translateZ(308px);
+			-o-transform:rotateY(216deg) translateZ(308px);
+			transform:rotateY(216deg) translateZ(308px);
+		}
+		li:nth-of-type(8){
+			-webkit-transform:rotateY(252deg) translateZ(308px);
+			-moz-transform:rotateY(252deg) translateZ(308px);
+			-ms-transform:rotateY(252deg) translateZ(308px);
+			-o-transform:rotateY(252deg) translateZ(308px);
+			transform:rotateY(252deg) translateZ(308px);
+		}
+		li:nth-of-type(9){
+			-webkit-transform:rotateY(288deg) translateZ(308px);
+			-moz-transform:rotateY(288deg) translateZ(308px);
+			-ms-transform:rotateY(288deg) translateZ(308px);
+			-o-transform:rotateY(288deg) translateZ(308px);
+			transform:rotateY(288deg) translateZ(308px);
+		}
+		li:nth-of-type(10){
+			-webkit-transform:rotateY(324deg) translateZ(308px);
+			-moz-transform:rotateY(324deg) translateZ(308px);
+			-ms-transform:rotateY(324deg) translateZ(308px);
+			-o-transform:rotateY(324deg) translateZ(308px);
+			transform:rotateY(324deg) translateZ(308px);-webkit-
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul>
+			<li><img src="images/0.png" alt=""></li>
+			<li><img src="images/1.png" alt=""></li>
+			<li><img src="images/2.png" alt=""></li>
+			<li><img src="images/3.png" alt=""></li>
+			<li><img src="images/4.png" alt=""></li>
+			<li><img src="images/5.png" alt=""></li>
+			<li><img src="images/6.png" alt=""></li>
+			<li><img src="images/7.png" alt=""></li>
+			<li><img src="images/8.png" alt=""></li>
+			<li><img src="images/9.png" alt=""></li>
+		</ul>
+	</div>
+	<script>
+		//获取数据
+		var ul  = document.getElementsByTagName('ul')[0];
+		var lis = ul.getElementsByTagName('li');
+		var init = 0 ;
+		
+		//定义变量及动作行为
+		for (var i = 0; i < lis.length; i++) {
+			
+			lis[i].remb = i ;
+			lis[i].onclick = function () {
+				init++;
+				// body...
+				console.log(init,-36*this.remb+360*init);
+				ul.style.transform ='rotateX(-20deg) rotateY('+(-36*this.remb-360*init)+'deg)'; 
+				ul.style.overflow = ''
+			}
+		}
+	</script>
+</body>
+</html>

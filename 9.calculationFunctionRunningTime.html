@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算函数运行事件</title>
+</head>
+<body>
+	<script>
+		function compute(f){
+			var p = [];
+			for (var i = 1;i<arguments.length; i++) {
+				p.push(arguments[i]);
+			}
+			var startTime = new Date().getTime();
+			f.apply(null,p);
+			var endTime = new Date().getTime();
+
+			var time = endTime - startTime;
+			return time ;
+		}
+		function abc(){
+			console.log('abc');
+		}
+		function run(a,b,c){
+			for (var i = 0; i <= a; i++) {
+				for (var j = 0; j <= b; j++) {
+					for (var k = 0; k <= c; k++) {
+						console.info('run');
+					}
+				}
+			}
+		}
+		//debugger;
+		console.log(compute(abc));
+		console.log(compute(run ,3,2,1));
+	</script>
+</body>
+</html>

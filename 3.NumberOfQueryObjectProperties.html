@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查询对象属性个数</title>
+</head>
+<body>
+	<script>
+		var a = {
+			name:'嘎嘣豆',
+			age:'18',
+			specail:'beautiful',
+			friends:{
+				name:'Mr_Chen',
+				age:'88',
+			}
+		}
+		/*	对象的遍历
+			for(var 键名 in 对象)
+		*/
+	//debugger;
+		// function lenObj(a){
+		// 	var	len = 0;
+		// 	for(var i in a){
+		// 		// 属性为对象时
+		// 		if(typeof(a[i]) == 'object'){
+		// 			len += lenObj(a[i]);
+		// 		}else{
+		// 			// 属性为普通属性时
+		// 			len += 1;
+		// 		}
+		// 	}
+		// 	return len;
+		// }
+		// //lenObj(a);
+		// console.log(lenObj(a));
+		function clone(a){
+			var newObj = {};
+			for(var i in a ){
+				if (typeof(a[i])=='object') {
+					newObj[i] = clone(a[i])
+				} else {
+					newObj[i] = a[i];
+				}
+			}
+			return newObj;
+		}
+		var t = clone(a);
+		console.log(t);		
+		console.log(a);
+	</script>
+</body>
+</html>

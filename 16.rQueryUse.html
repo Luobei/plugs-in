@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>rQuery使用</title>
+	<script src="rQuery.js"></script>
+	<style>
+		#div1{
+			height: 50px; 
+			width: 50px; 
+			position: absolute;
+			top:10px;
+			left: 20px; 
+			background-color: red; 
+			opacity: 1;
+		}
+		#div2{
+			height: 50px; 
+			width: 50px; 
+			position: absolute;
+			top:70px;
+			left: 20px; 
+			background-color: red; 
+			opacity: 1;
+		}
+		#div3{
+			height: 50px; 
+			width: 50px; 
+			position: absolute;
+			top:130px;
+			left: 20px; 
+			background-color: red;
+			opacity: 1; 
+		}
+	</style>
+</head>
+<body>
+	<img src=""  id="pic" class="photo">
+	<img src=""  id="pic1" class="photo">
+	<div id="div1" class="move">11111111111111</div>
+	<div id="div2" class="move"></div>
+	<div id="div3" class="move"></div>
+	<script>
+	var c = $('#pic');
+	var b = $('div');
+	var a = $('.photo');
+	var d = $(".move")
+	// console.log(a,b,c)
+	// console.log(c.attr('class'));
+	// c.attr("src","images/05.jpg");
+	// c.attr({"src":"images/05.jpg" , "alt":"飞飞飞飞"})
+	// c.attr("src","images/05.jpg" , "alt","飞飞飞飞")
+	
+	//console.log(c,window);
+	//debugger;
+	console.log(d.css("height"));
+	//console.log(window.getComputedStyle(document.getElementById('pic')));
+	//c.css("height","400px");
+	//console.log(c.css("height")) ;
+	//b.css({"height":"400px","width":"600px","border":"1px solid red"})
+	//console.log(a.className);
+	//debugger;
+	// c.addClass('hehe');
+	// a.addClass('hehe');//
+	// c.removeClass('hehe');
+	// a.removeClass('hehe');
+	// var d = document.getElementById('div1');
+	debugger;
+	//animate(d,'height',200)
+	//d.animate({"left":"400" , "width":"100","opacity":"0.3"})
+	//d.css("top");
+	console.log(d.html());
+	//console.log(d.css("opacity"));
+	//d.animate("opacity","0.3" )
+	</script>
+</body>
+</html>

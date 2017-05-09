@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包的应用</title>
+	<style type="text/css">
+		li{cursor:pointer}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<script>
+		var ul = document.getElementsByTagName('ul')[0];
+		var lis = ul.getElementsByTagName('li');
+		//debugger;
+		for (var i = 0 ; i < lis.length ; i++){
+			lis[i].onclick = (function(e){
+				return function(){
+					console.log(e);
+				}
+			})(i);
+		}
+	</script>
+</body>
+</html>

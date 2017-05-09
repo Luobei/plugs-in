@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重</title>
+</head>
+<body>
+	<script>
+		var a = [1,1,1,4,3,1,6,6,8,7,7,2,3,3,3,4,4,4,4,4,5,6,7];
+		// function getArr(a){
+			var newArr = [],
+				newObj ={};
+			for (var i = 0; i < a.length; i++) {
+				//如果a[i]已经存在，那么放着不管，
+				//通过查询新对象中是否存在来确定a[i]是否存在
+				if(newObj[a[i]] in newObj){
+					
+				}// 如果a[i]不存在，那么放着进新的数组
+				 else{
+					newObj[a[i]]  = 1 ; 
+					newArr.push(a[i]) ;
+				}
+			}
+			return newArr;
+		}
+		//console.log(getArr(a));
+		function count(a){
+			var newArr = [],
+				Obj ={},
+				
+			for (var i = 0; i < a.length; i++) {
+				 var t = a[i];
+				//如果a[i]已经存在，那么放着不管，
+				//通过查询新对象中是否存在来确定a[i]是否存在
+				if(Obj.hasOwnProperty(t)){
+					Obj[t] = Obj[t] + 1
+				}// 如果a[i]不存在，那么放着进新的数组
+				 else{
+					Obj[t] = 1;
+				}
+			}
+			return Obj;
+		}
+		//debugger;
+		console.log(count(a));
+	</script>
+</body>
+</html>
